@@ -1,11 +1,18 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import './App.css'
 
 import Info from './components/Info'
+import EstimateForm from './components/EstimateForm'
 
-class App extends Component{
+class App extends Component {
   state = {
     showForm: true
+  }
+
+  handleShowEstimateForm = () => {
+    this.setState({
+      showForm: !this.state.showForm
+    })
   }
 
   render () {
@@ -15,7 +22,8 @@ class App extends Component{
           <h1>Générateur de Devis</h1>
         </div>
 
-        <Info/>
+        <Info onHandleShowEstimateForm={this.handleShowEstimateForm}/>
+        {this.state.showForm && <EstimateForm />}
       </div>
     )
   }
